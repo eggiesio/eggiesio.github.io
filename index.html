@@ -1,26 +1,135 @@
 <!DOCTYPE html>
-<html lang="en" data-beasties-container>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Eggies For Android</title>
-
-  <base href="/">
-
-  <meta name="color-scheme" content="light dark">
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-
-  <link rel="icon" type="image/png" href="assets/icon/favicon.png">
-
-  <!-- add to homescreen for ios -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<style>:root{--ion-color-primary:#0054e9;--ion-color-primary-rgb:0, 84, 233;--ion-color-primary-contrast:#fff;--ion-color-primary-contrast-rgb:255, 255, 255;--ion-color-primary-shade:#004acd;--ion-color-primary-tint:#1a65eb;--ion-color-secondary:#0163aa;--ion-color-secondary-rgb:1, 99, 170;--ion-color-secondary-contrast:#fff;--ion-color-secondary-contrast-rgb:255, 255, 255;--ion-color-secondary-shade:#015796;--ion-color-secondary-tint:#1a73b3;--ion-color-tertiary:#6030ff;--ion-color-tertiary-rgb:96, 48, 255;--ion-color-tertiary-contrast:#fff;--ion-color-tertiary-contrast-rgb:255, 255, 255;--ion-color-tertiary-shade:#542ae0;--ion-color-tertiary-tint:#7045ff;--ion-color-success:#2dd55b;--ion-color-success-rgb:45, 213, 91;--ion-color-success-contrast:#000;--ion-color-success-contrast-rgb:0, 0, 0;--ion-color-success-shade:#28bb50;--ion-color-success-tint:#42d96b;--ion-color-warning:#ffc409;--ion-color-warning-rgb:255, 196, 9;--ion-color-warning-contrast:#000;--ion-color-warning-contrast-rgb:0, 0, 0;--ion-color-warning-shade:#e0ac08;--ion-color-warning-tint:#ffca22;--ion-color-danger:#c5000f;--ion-color-danger-rgb:197, 0, 15;--ion-color-danger-contrast:#fff;--ion-color-danger-contrast-rgb:255, 255, 255;--ion-color-danger-shade:#ad000d;--ion-color-danger-tint:#cb1a27;--ion-color-light:#f4f5f8;--ion-color-light-rgb:244, 245, 248;--ion-color-light-contrast:#000;--ion-color-light-contrast-rgb:0, 0, 0;--ion-color-light-shade:#d7d8da;--ion-color-light-tint:#f5f6f9;--ion-color-medium:#636469;--ion-color-medium-rgb:99, 100, 105;--ion-color-medium-contrast:#fff;--ion-color-medium-contrast-rgb:255, 255, 255;--ion-color-medium-shade:#57585c;--ion-color-medium-tint:#737478;--ion-color-dark:#222428;--ion-color-dark-rgb:34, 36, 40;--ion-color-dark-contrast:#fff;--ion-color-dark-contrast-rgb:255, 255, 255;--ion-color-dark-shade:#1e2023;--ion-color-dark-tint:#383a3e}html{--ion-dynamic-font:-apple-system-body;--ion-font-family:var(--ion-default-font)}body{background:var(--ion-background-color);color:var(--ion-text-color)}@supports (padding-top: 20px){html{--ion-safe-area-top:var(--ion-statusbar-padding)}}@supports (padding-top: env(safe-area-inset-top)){html{--ion-safe-area-top:env(safe-area-inset-top);--ion-safe-area-bottom:env(safe-area-inset-bottom);--ion-safe-area-left:env(safe-area-inset-left);--ion-safe-area-right:env(safe-area-inset-right)}}*{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}html{width:100%;height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin:0;padding:0;position:fixed;width:100%;max-width:100%;height:100%;max-height:100%;transform:translateZ(0);text-rendering:optimizeLegibility;overflow:hidden;touch-action:manipulation;-webkit-user-drag:none;-ms-content-zooming:none;word-wrap:break-word;overscroll-behavior-y:none;-webkit-text-size-adjust:none;text-size-adjust:none}html{font-family:var(--ion-font-family)}@supports (-webkit-touch-callout: none){html{font:var(--ion-dynamic-font, 16px var(--ion-font-family))}}@media (prefers-color-scheme: dark){:root{--ion-color-primary:#4d8dff;--ion-color-primary-rgb:77, 141, 255;--ion-color-primary-contrast:#000;--ion-color-primary-contrast-rgb:0, 0, 0;--ion-color-primary-shade:#447ce0;--ion-color-primary-tint:#5f98ff;--ion-color-secondary:#46b1ff;--ion-color-secondary-rgb:70, 177, 255;--ion-color-secondary-contrast:#000;--ion-color-secondary-contrast-rgb:0, 0, 0;--ion-color-secondary-shade:#3e9ce0;--ion-color-secondary-tint:#59b9ff;--ion-color-tertiary:#8482fb;--ion-color-tertiary-rgb:132, 130, 251;--ion-color-tertiary-contrast:#000;--ion-color-tertiary-contrast-rgb:0, 0, 0;--ion-color-tertiary-shade:#7472dd;--ion-color-tertiary-tint:#908ffb;--ion-color-success:#2dd55b;--ion-color-success-rgb:45, 213, 91;--ion-color-success-contrast:#000;--ion-color-success-contrast-rgb:0, 0, 0;--ion-color-success-shade:#28bb50;--ion-color-success-tint:#42d96b;--ion-color-warning:#ffce31;--ion-color-warning-rgb:255, 206, 49;--ion-color-warning-contrast:#000;--ion-color-warning-contrast-rgb:0, 0, 0;--ion-color-warning-shade:#e0b52b;--ion-color-warning-tint:#ffd346;--ion-color-danger:#f24c58;--ion-color-danger-rgb:242, 76, 88;--ion-color-danger-contrast:#000;--ion-color-danger-contrast-rgb:0, 0, 0;--ion-color-danger-shade:#d5434d;--ion-color-danger-tint:#f35e69;--ion-color-light:#222428;--ion-color-light-rgb:34, 36, 40;--ion-color-light-contrast:#fff;--ion-color-light-contrast-rgb:255, 255, 255;--ion-color-light-shade:#1e2023;--ion-color-light-tint:#383a3e;--ion-color-medium:#989aa2;--ion-color-medium-rgb:152, 154, 162;--ion-color-medium-contrast:#000;--ion-color-medium-contrast-rgb:0, 0, 0;--ion-color-medium-shade:#86888f;--ion-color-medium-tint:#a2a4ab;--ion-color-dark:#f4f5f8;--ion-color-dark-rgb:244, 245, 248;--ion-color-dark-contrast:#000;--ion-color-dark-contrast-rgb:0, 0, 0;--ion-color-dark-shade:#d7d8da;--ion-color-dark-tint:#f5f6f9}}</style><link rel="stylesheet" href="styles.2c0b20e85fb2721c.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.2c0b20e85fb2721c.css"></noscript></head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eggies - Mobile Game Portfolio | Puzzle & Educational Games</title>
+    <meta name="description" content="Discover 48+ mobile games by Eggies. Play free puzzle games, educational brain teasers, and casual games. Available on Google Play Store.">
+    <meta name="keywords" content="mobile games, puzzle games, educational games, brain games, Eggies, Android games, free games, paid games">
+    <meta name="author" content="Eggies">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Eggies - Mobile Game Portfolio">
+    <meta property="og:description" content="48+ puzzle, educational, and casual mobile games">
+    <meta property="og:image" content="https://yourdomain.com/images/logo.webp">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Eggies - Mobile Game Portfolio">
+    <meta name="twitter:description" content="48+ puzzle, educational, and casual mobile games">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
 <body>
-  <app-root></app-root>
-<script src="runtime.a7f38053313d6635.js" type="module"></script><script src="polyfills.c1d7d33ea838c63e.js" type="module"></script><script src="main.55f6dc99130e4372.js" type="module"></script></body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="images/logo.webp" alt="Eggies Logo">
+                    <span>Eggies</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Play. Enjoy. Repeat.</h1>
+                <p>Discover our collection of amazing mobile games available on the Google Play Store</p>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search games by name or category...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Games</button>
+                    <!-- Category buttons will be dynamically added here -->
+                </div>
+                <select class="sort-select">
+                    <option value="name">Sort by Name</option>
+                    <option value="category">Sort by Category</option>
+                    <option value="recent">Most Recent</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="apps-section">
+        <div class="container">
+            <div class="apps-stats">
+                <p>Showing <span id="app-count">0</span> of <span id="total-apps">48</span> awesome games</p>
+            </div>
+            <div class="apps-grid" id="apps-container">
+                <!-- Game cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Eggies</h3>
+                    <ul class="footer-links">
+                        <li><a href="story.html"><i class="fas fa-rocket"></i> Our Story</a></li>
+                        <li><a href="#"><i class="fas fa-gamepad"></i> Game Development</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="app-ads.txt"><i class="fas fa-ad"></i> Ads.txt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column" id="contact">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@eggies.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Eggies. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--secondary-color);"></i></p>
+            </div>
+        </div>
+
+        <div style="display: none;">
+            <h1>Eggies Mobile Games</h1>
+            <p>Educational games, puzzle games, brain teasers, math games, word games, trivia games</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

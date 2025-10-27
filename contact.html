@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Eggies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the contact page */
+        .contact-hero {
+            padding: 4rem 0 2rem;
+            background: var(--bg-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-content {
+            padding: 3rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            height: fit-content;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background: var(--bg-light);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .mailto-section {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .mailto-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .mailto-btn {
+            background: var(--bg-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .mailto-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        .faq-section {
+            margin-top: 3rem;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info, .contact-form, .faq-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-hero {
+                padding: 3rem 0 1.5rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info, .contact-form, .faq-section {
+                padding: 1.5rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Eggies Logo">
+                    <span>Eggies</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you. Contact us directly and we'll respond as soon as possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-section">
+                        <h2>Contact Information</h2>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email Us</h3>
+                                <p><a href="mailto:eggies.co@gmail.com">eggies.co@gmail.com</a></p>
+                                <p>We'll respond within 24 hours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Based In</h3>
+                                <p>Global Game Development Studio</p>
+                                <p>Creating games for players worldwide</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Response Time</h3>
+                                <p>Typically within 24 hours</p>
+                                <p>Monday - Friday</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://play.google.com/store/apps/dev?id=8085959976691816859" class="social-link">
+                                <i class="fab fa-google-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form - Now using Mailto -->
+                <div class="contact-form">
+                    <div class="contact-section">
+                        <h2>Send Us a Message</h2>
+                        <div class="mailto-section">
+                            <p>Click the button below to email us directly from your email client</p>
+                            <a href="mailto:eggies.co@gmail.com?subject=Contact%20from%20Eggies%20Website&body=Hello%20Eggies%20Team,%0D%0A%0D%0AI%20would%20like%20to%20get%20in%20touch%20with%20you." 
+                               class="mailto-btn">
+                                <i class="fas fa-paper-plane"></i> Email Us Directly
+                            </a>
+                            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-light);">
+                                This will open your default email application with our address pre-filled
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <div class="contact-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How can I report a bug in one of your games?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Please email us at <a href="mailto:eggies.co@gmail.com">eggies.co@gmail.com</a> to report any bugs you encounter. Include the game name, device type, and a detailed description of the issue. Screenshots or screen recordings are very helpful!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you take game suggestions or ideas?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We love hearing creative ideas from our community! While we can't implement every suggestion, we do review all submissions and some of our best games have been inspired by player feedback. Email us your ideas!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How can I remove ads from your games?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Many of our games offer an option to remove ads through a one-time purchase. Look for the "Remove Ads" option in the game's settings or store menu. This supports our continued development of free games.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are your games safe for children?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We design our games to be family-friendly and appropriate for all ages. We follow strict content guidelines and comply with COPPA regulations to ensure a safe gaming experience for younger players.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you offer support for your games?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we provide support for all our games. If you're experiencing issues or have questions, please email us at <a href="mailto:eggies.co@gmail.com">eggies.co@gmail.com</a> and we'll be happy to help!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Eggies</h3>
+                    <ul class="footer-links">
+                        <li><a href="story.html"><i class="fas fa-rocket"></i> Our Story</a></li>
+                        <li><a href="index.html"><i class="fas fa-gamepad"></i> Game Development</a></li>
+                        <li><a href="index.html"><i class="fas fa-users"></i> Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="app-ads.txt"><i class="fas fa-ad"></i> Ads.txt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:eggies.co@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Eggies. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--secondary-color);"></i></p>
+            </div>
+        </div>
+        <div style="display: none;">
+            <h1>Eggies Mobile Games</h1>
+            <p>Educational games, puzzle games, brain teasers, math games, word games, trivia games</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const isVisible = navLinks.style.display === 'flex';
+                    navLinks.style.display = isVisible ? 'none' : 'flex';
+                    
+                    // Add responsive styles for mobile menu
+                    if (!isVisible) {
+                        navLinks.style.flexDirection = 'column';
+                        navLinks.style.position = 'absolute';
+                        navLinks.style.top = '100%';
+                        navLinks.style.left = '0';
+                        navLinks.style.right = '0';
+                        navLinks.style.backgroundColor = 'var(--bg-color)';
+                        navLinks.style.padding = '1rem';
+                        navLinks.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                    }
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.navbar') && window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'row';
+                    navLinks.style.position = 'static';
+                    navLinks.style.backgroundColor = 'transparent';
+                    navLinks.style.padding = '0';
+                    navLinks.style.boxShadow = 'none';
+                } else {
+                    navLinks.style.display = 'none';
+                }
+            });
+
+            // FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

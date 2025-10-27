@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Eggies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the story page */
+        .story-hero {
+            padding: 4rem 0 2rem;
+            background: var(--bg-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .story-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .story-content {
+            padding: 3rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .story-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .story-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .story-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .story-section p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .story-section ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .story-section li {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--bg-gradient);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-year {
+            background: var(--bg-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Game Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .category-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-gradient);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .story-section {
+                padding: 2rem;
+            }
+            
+            .story-hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .story-hero {
+                padding: 3rem 0 1.5rem;
+            }
+            
+            .story-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .story-section {
+                padding: 1.5rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Eggies Logo">
+                    <span>Eggies</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Story Hero Section -->
+    <section class="story-hero">
+        <div class="container">
+            <div class="story-hero-content">
+                <h1>From One Math Game to 48 Learning Adventures</h1>
+                <p>6 Years of Making Education Fun - One Game at a Time</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Content -->
+    <section class="story-content">
+        <div class="container">
+            <div class="story-container">
+                <!-- The Beginning -->
+                <div class="story-section">
+                    <h2>The Genesis of Eggies</h2>
+                    <p>It all started in 2018 with a simple yet powerful idea: <strong>making math fun</strong>. What began as a passion project quickly turned into something much bigger when our first game, <strong>Speed Math - Mini Math Games</strong>, became an unexpected hit.</p>
+                    
+                    <p>"Seeing players actually enjoy practicing math was the spark that ignited the Eggies revolution. That moment when someone realizes they're learning while having fun - that's what drives us every day."</p>
+                </div>
+
+                <!-- Our Journey Timeline -->
+                <div class="story-section">
+                    <h2>Our Journey</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2018</div>
+                            <div class="timeline-content">
+                                <h4>The Beginning</h4>
+                                <p>Launched Speed Math - our first successful educational game that proved learning could be exciting</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2019</div>
+                            <div class="timeline-content">
+                                <h4>Expanding Horizons</h4>
+                                <p>Discovered our passion for brain teasers and expanded to puzzle games, reaching new audiences</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020</div>
+                            <div class="timeline-content">
+                                <h4>Rapid Growth</h4>
+                                <p>Reached 25+ games, each with a unique learning angle and dedicated fan base</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2021-2025</div>
+                            <div class="timeline-content">
+                                <h4>Mastering Our Craft</h4>
+                                <p>Perfected the balance between education and entertainment, growing to 48 games with millions of downloads worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Philosophy -->
+                <div class="story-section">
+                    <h2>Our Development Philosophy</h2>
+                    <div class="categories-grid">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Learning in Disguise</h4>
+                            <p>Making education feel like play, not work</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Brain Training</h4>
+                            <p>Challenging minds from math whizzes to puzzle lovers</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4>Quick Sessions</h4>
+                            <p>Games designed for busy lifestyles and short breaks</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Quality Focus</h4>
+                            <p>Simple interfaces with deep, engaging gameplay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Categories -->
+                <div class="story-section">
+                    <h2>Our Game Universe</h2>
+                    <p>From that first math game, we've built a diverse ecosystem of learning experiences:</p>
+                    
+                    <div class="categories-grid">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h4>Math Masters</h4>
+                            <p>Speed Math, Math Challenge, and brain-teasing calculations</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <h4>Word Wizards</h4>
+                            <p>Word Search, vocabulary builders, and language games</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <h4>Puzzle Pros</h4>
+                            <p>Emoji Quiz, logic games, and brain teasers</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <h4>Memory Marvels</h4>
+                            <p>Trivia, quiz games, and knowledge challenges</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Eggies Difference -->
+                <div class="story-section">
+                    <h2>The Solo Developer Advantage</h2>
+                    <p>As a one-person studio, every Eggies game gets personal attention and care:</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">48</div>
+                            <div class="stat-label">Games Created</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Years of Passion</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1M+</div>
+                            <div class="stat-label">Happy Players</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4.0+</div>
+                            <div class="stat-label">Average Rating</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Why Players Love Eggies</h3>
+                    <ul>
+                        <li><strong>"Perfect for quick brain exercise"</strong> - Our games fit into busy schedules</li>
+                        <li><strong>"Learning without pressure"</strong> - Education that feels like entertainment</li>
+                        <li><strong>"Works offline"</strong> - Play anywhere, anytime without internet</li>
+                        <li><strong>"Family-friendly"</strong> - Safe, appropriate content for all ages</li>
+                    </ul>
+                </div>
+
+                <!-- Future Vision -->
+                <div class="story-section">
+                    <h2>Our Future Vision</h2>
+                    <p>We're just getting started! The Eggies journey continues with:</p>
+                    <ul>
+                        <li><strong>Expanding our educational game universe</strong> with new subjects and approaches</li>
+                        <li><strong>More interactive learning experiences</strong> that adapt to each player</li>
+                        <li><strong>Community features</strong> for shared learning and friendly competition</li>
+                        <li><strong>Always maintaining our core values</strong>: accessible, educational, and most importantly - fun!</li>
+                    </ul>
+                    
+                    <p>The same care and passion that went into Speed Math back in 2018 goes into every new game we create today. We believe that everyone deserves to enjoy learning, and we're committed to making that happen, one game at a time.</p>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="cta-section">
+                    <h2>Join the Eggies Learning Revolution</h2>
+                    <p>Be part of our growing community of players who believe learning should be fun</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="index.html" class="cta-btn">
+                            <i class="fas fa-gamepad"></i> Explore Our Games
+                        </a>
+                        <a href="https://play.google.com/store/apps/dev?id=8085959976691816859" class="cta-btn" target="_blank">
+                            <i class="fab fa-google-play"></i> Visit Play Store
+                        </a>
+                        <a href="contact.html" class="cta-btn">
+                            <i class="fas fa-lightbulb"></i> Share Your Ideas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Eggies</h3>
+                    <ul class="footer-links">
+                        <li><a href="story.html"><i class="fas fa-rocket"></i> Our Story</a></li>
+                        <li><a href="index.html"><i class="fas fa-gamepad"></i> Game Development</a></li>
+                        <li><a href="index.html"><i class="fas fa-users"></i> Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="app-ads.txt"><i class="fas fa-ad"></i> Ads.txt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:eggies.co@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Eggies. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--secondary-color);"></i></p>
+            </div>
+        </div>
+        <div style="display: none;">
+            <h1>Eggies Mobile Games</h1>
+            <p>Educational games, puzzle games, brain teasers, math games, word games, trivia games</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const isVisible = navLinks.style.display === 'flex';
+                    navLinks.style.display = isVisible ? 'none' : 'flex';
+                    
+                    // Add responsive styles for mobile menu
+                    if (!isVisible) {
+                        navLinks.style.flexDirection = 'column';
+                        navLinks.style.position = 'absolute';
+                        navLinks.style.top = '100%';
+                        navLinks.style.left = '0';
+                        navLinks.style.right = '0';
+                        navLinks.style.backgroundColor = 'var(--bg-color)';
+                        navLinks.style.padding = '1rem';
+                        navLinks.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                    }
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.navbar') && window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'row';
+                    navLinks.style.position = 'static';
+                    navLinks.style.backgroundColor = 'transparent';
+                    navLinks.style.padding = '0';
+                    navLinks.style.boxShadow = 'none';
+                } else {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
